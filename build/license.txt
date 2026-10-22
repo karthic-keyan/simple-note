@@ -1,0 +1,42 @@
+SIMPLE NOTE - END USER LICENSE AGREEMENT (EULA) & TERMS AND CONDITIONS
+Last Updated: October 2026
+
+PLEASE READ THIS END USER LICENSE AGREEMENT ("AGREEMENT") CAREFULLY BEFORE INSTALLING OR USING SIMPLE NOTE ("APPLICATION"). BY CLICKING "I AGREE", "I ACCEPT", OR BY INSTALLING, DOWNLOADING, OR USING THE APPLICATION, YOU AGREE TO BE BOUND BY THE TERMS AND CONDITIONS OF THIS AGREEMENT.
+
+IF YOU DO NOT AGREE TO THE TERMS OF THIS AGREEMENT, DO NOT INSTALL, COPY, OR USE THE APPLICATION.
+
+1. LICENSE GRANT
+Simple Note grants you a personal, revocable, non-exclusive, non-transferable, royalty-free license to download, install, and use the Application on Windows devices that you own or control, strictly in accordance with the terms of this Agreement and the Microsoft Store Terms of Sale where applicable.
+
+2. LOCAL DATA STORAGE AND PRIVACY GUARANTEE
+2.1 100% Offline Architecture: Simple Note is designed as an offline-first desktop application. All notes, notebooks, tags, attachments, and user preferences created within the Application are stored exclusively on your local device within a local SQLite database.
+2.2 Zero Telemetry & Zero Cloud Ingestion: Simple Note does not collect, transmit, store, sell, or share any personal information, note contents, keystrokes, analytics, or behavioral telemetry with any remote server or third party.
+2.3 Complete User Ownership: You retain sole and exclusive ownership of all notes, data, text, and documents created or imported into the Application.
+2.4 Local Backups: The Application provides local export and import functionality. You are solely responsible for managing backups of your local data.
+
+3. RESTRICTIONS ON USE
+You agree not to, and you will not permit others to:
+(a) License, sell, rent, lease, assign, distribute, host, outsource, or otherwise commercially exploit the Application;
+(b) Modify, make derivative works of, disassemble, decrypt, reverse compile, or reverse engineer any part of the Application;
+(c) Use the Application for any unlawful purpose or in violation of any applicable local, state, national, or international law or regulation;
+(d) Remove, alter, or obscure any proprietary notice (including copyright or trademark notices) of the Application.
+
+4. INTELLECTUAL PROPERTY RIGHTS
+The Application, including all copyrights, patents, trademarks, trade secrets, visual interfaces, graphics, design, compilation, information, and computer code (including source code and object code) are the intellectual property of the Simple Note project contributors. All rights not expressly granted to you are reserved.
+
+5. MICROSOFT STORE COMPLIANCE
+If you obtained the Application via the Microsoft Store, this Agreement supplements and incorporates the Standard Application License Terms provided by Microsoft. In the event of any conflict between this Agreement and the Microsoft Store Terms, the Microsoft Store Terms shall govern to the extent of such conflict.
+
+6. DISCLAIMER OF WARRANTIES
+THE APPLICATION IS PROVIDED TO YOU "AS IS" AND "AS AVAILABLE" WITH ALL FAULTS AND DEFECTS WITHOUT WARRANTY OF ANY KIND. TO THE MAXIMUM EXTENT PERMITTED UNDER APPLICABLE LAW, THE APPLICATION PROVIDERS EXPRESSLY DISCLAIM ALL WARRANTIES, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.
+
+7. LIMITATION OF LIABILITY
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL THE APPLICATION AUTHORS OR CONTRIBUTORS BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER (INCLUDING, BUT NOT LIMITED TO, DAMAGES FOR LOSS OF PROFITS, LOSS OF DATA, BUSINESS INTERRUPTION, PERSONAL INJURY, OR LOSS OF PRIVACY) ARISING OUT OF OR IN ANY WAY RELATED TO THE USE OF OR INABILITY TO USE THE APPLICATION.
+
+8. TERMINATION
+This Agreement is effective from the date you first install or use the Application and shall continue until terminated. You may terminate this Agreement at any time by uninstalling and deleting all copies of the Application from your device.
+
+9. GOVERNING LAW
+This Agreement shall be governed by and construed in accordance with the laws of your applicable jurisdiction, excluding its conflicts of law rules.
+
+BY INSTALLING SIMPLE NOTE, YOU ACKNOWLEDGE THAT YOU HAVE READ, UNDERSTOOD, AND AGREE TO BE BOUND BY THIS AGREEMENT.

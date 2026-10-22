@@ -1,0 +1,64 @@
+{
+  "appId": "com.simplenote.notesapp",
+  "productName": "Simple Note",
+  "copyright": "Copyright © 2026 Simple Note",
+  "directories": {
+    "output": "release",
+    "buildResources": "build"
+  },
+  "files": [
+    "dist/**/*",
+    "dist-electron/**/*",
+    "build/icon.ico",
+    "package.json"
+  ],
+  "asar": true,
+  "asarUnpack": [
+    "**/node_modules/better-sqlite3/**/*"
+  ],
+  "win": {
+    "icon": "build/icon.ico",
+    "target": [
+      {
+        "target": "nsis",
+        "arch": ["x64"]
+      },
+      {
+        "target": "portable",
+        "arch": ["x64"]
+      }
+    ]
+  },
+  "nsis": {
+    "artifactName": "${productName}-Setup-${version}.${ext}",
+    "oneClick": false,
+    "perMachine": false,
+    "allowToChangeInstallationDirectory": true,
+    "license": "build/license.txt",
+    "installerIcon": "build/icon.ico",
+    "uninstallerIcon": "build/icon.ico",
+    "installerHeader": "build/installerHeader.bmp",
+    "installerHeaderIcon": "build/icon.ico",
+    "installerSidebar": "build/installerSidebar.bmp",
+    "uninstallerSidebar": "build/installerSidebar.bmp",
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "Simple Note",
+    "uninstallDisplayName": "Simple Note",
+    "deleteAppDataOnUninstall": false,
+    "runAfterFinish": true
+  },
+  "portable": {
+    "artifactName": "${productName}-Portable-${version}.${ext}"
+  },
+  "appx": {
+    "identityName": "SimpleNote.Desktop",
+    "applicationId": "SimpleNote",
+    "publisher": "CN=SimpleNoteApp",
+    "publisherDisplayName": "Simple Note",
+    "backgroundColor": "#181a1f",
+    "showNameOnTiles": true,
+    "languages": ["en-US"],
+    "artifactName": "${productName}-Store-${version}.${ext}"
+  }
+}

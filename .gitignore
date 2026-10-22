@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+package-lock.json.bak
+
+# Compilation & Packaging outputs
+dist/
+dist-electron/
+release/
+
+# Local databases and runtime state
+.data/
+*.db
+*.db-wal
+*.db-shm
+
+# Native build artifacts
+native-addons/
+build/Release/
+build/Debug/
+
+# Logs and system files
+*.log
+Thumbs.db
+.DS_Store
+
+# Editor directories
+.vscode/
+.idea/
+
+# Testing coverage
+coverage/

@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import { TitleBar } from './components/layout/TitleBar';
 import { ThreePaneLayout } from './components/layout/ThreePaneLayout';
 import { ToastContainer } from './components/layout/Toast';
-import { SettingsModal } from './components/modals/SettingsModal';
-import { NotebookModal } from './components/modals/NotebookModal';
-import { TagModal } from './components/modals/TagModal';
-import { MoveNoteModal } from './components/modals/MoveNoteModal';
-import { BackupRestoreModal } from './components/modals/BackupRestoreModal';
-import { ConfirmDeleteModal } from './components/modals/ConfirmDeleteModal';
+
+// Lazy-load modals so they are only fetched/parsed when needed, speeding up initial render
+const SettingsModal = lazy(() => import('./components/modals/SettingsModal').then(m => ({ default: m.SettingsModal })));
+const NotebookModal = lazy(() => import('./components/modals/NotebookModal').then(m => ({ default: m.NotebookModal })));
+const TagModal = lazy(() => import('./components/modals/TagModal').then(m => ({ default: m.TagModal })));
+const MoveNoteModal = lazy(() => import('./components/modals/MoveNoteModal').then(m => ({ default: m.MoveNoteModal })));
+const BackupRestoreModal = lazy(() => import('./components/modals/BackupRestoreModal').then(m => ({ default: m.BackupRestoreModal })));
+const ConfirmDeleteModal = lazy(() => import('./components/modals/ConfirmDeleteModal').then(m => ({ default: m.ConfirmDeleteModal })));
 
 import { useSettingsStore } from './stores/settings.store';
 import { useNotebooksStore } from './stores/notebooks.store';
@@ -22,11 +24,11 @@ export const App: React.FC = () => {
   const { loadNotes, createNote, flushPendingSave, togglePin, toggleFavorite, activeNote } = useNotesStore();
   const { toggleSidebar, openSettings, openNotebookModal } = useUIStore();
 
-  // Load initial data on mount
+  // Load initial data on mount - parallelize independent requests to minimize startup time
   useEffect(() => {
     async function initApp() {
-      await loadSettings();
       await Promise.all([
+        loadSettings(),
         loadNotebooks(),
         loadTags(),
       ]);
@@ -115,13 +117,15 @@ export const App: React.FC = () => {
       {/* Main 3-Pane Body */}
       <ThreePaneLayout />
 
-      {/* Modals & Dialogs */}
-      <SettingsModal />
-      <NotebookModal />
-      <TagModal />
-      <MoveNoteModal />
-      <BackupRestoreModal />
-      <ConfirmDeleteModal />
+      {/* Modals & Dialogs (Loaded on-demand) */}
+      <Suspense fallback={null}>
+        <SettingsModal />
+        <NotebookModal />
+        <TagModal />
+        <MoveNoteModal />
+        <BackupRestoreModal />
+        <ConfirmDeleteModal />
+      </Suspense>
 
       {/* Floating Toasts */}
       <ToastContainer />

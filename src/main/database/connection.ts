@@ -43,8 +43,8 @@ export function initDatabase(customPath?: string): Database.Database {
   db.pragma('foreign_keys = ON');
   db.pragma('synchronous = NORMAL');
   db.pragma('temp_store = MEMORY');
-  db.pragma('cache_size = -64000'); // 64MB memory page cache
-  db.pragma('mmap_size = 268435456'); // 256MB memory map for read speed
+  db.pragma('cache_size = -16000'); // 16MB memory page cache
+  db.pragma('mmap_size = 67108864'); // 64MB memory map for read speed
 
   // Execute database migrations
   runMigrations(db);

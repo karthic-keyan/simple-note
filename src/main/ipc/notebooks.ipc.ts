@@ -1,7 +1,8 @@
-import { ipcMain } from 'electron';
+import { BrowserWindow } from 'electron';
 import Database from 'better-sqlite3';
 import { IPC_CHANNELS } from '../../shared/constants/ipc-channels';
 import { NotebookRepository } from '../database/repositories/notebook.repository';
+import { registerSecureHandler } from './security';
 import {
   CreateNotebookSchema,
   UpdateNotebookSchema,
@@ -9,29 +10,29 @@ import {
   ReorderNotebooksSchema,
 } from '../../shared/schemas/notebook.schema';
 
-export function registerNotebooksIpc(db: Database.Database): void {
+export function registerNotebooksIpc(db: Database.Database, getMainWindow: () => BrowserWindow | null): void {
   const repo = new NotebookRepository(db);
 
-  ipcMain.handle(IPC_CHANNELS.NOTEBOOKS_GET_ALL, async () => {
+  registerSecureHandler(IPC_CHANNELS.NOTEBOOKS_GET_ALL, getMainWindow, async () => {
     return repo.getAll();
   });
 
-  ipcMain.handle(IPC_CHANNELS.NOTEBOOKS_CREATE, async (_event, input) => {
+  registerSecureHandler(IPC_CHANNELS.NOTEBOOKS_CREATE, getMainWindow, async (_event, input) => {
     const validInput = CreateNotebookSchema.parse(input);
     return repo.create(validInput);
   });
 
-  ipcMain.handle(IPC_CHANNELS.NOTEBOOKS_UPDATE, async (_event, input) => {
+  registerSecureHandler(IPC_CHANNELS.NOTEBOOKS_UPDATE, getMainWindow, async (_event, input) => {
     const validInput = UpdateNotebookSchema.parse(input);
     return repo.update(validInput);
   });
 
-  ipcMain.handle(IPC_CHANNELS.NOTEBOOKS_DELETE, async (_event, options) => {
+  registerSecureHandler(IPC_CHANNELS.NOTEBOOKS_DELETE, getMainWindow, async (_event, options) => {
     const validOptions = DeleteNotebookSchema.parse(options);
     repo.delete(validOptions);
   });
 
-  ipcMain.handle(IPC_CHANNELS.NOTEBOOKS_REORDER, async (_event, ids: string[]) => {
+  registerSecureHandler(IPC_CHANNELS.NOTEBOOKS_REORDER, getMainWindow, async (_event, ids: string[]) => {
     const validIds = ReorderNotebooksSchema.parse(ids);
     repo.reorder(validIds);
   });

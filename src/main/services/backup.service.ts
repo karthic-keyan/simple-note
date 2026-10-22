@@ -38,7 +38,7 @@ export class BackupService {
         settings,
       };
 
-      fs.writeFileSync(filePath, JSON.stringify(backup, null, 2), 'utf-8');
+      await fs.promises.writeFile(filePath, JSON.stringify(backup, null, 2), 'utf-8');
       return { success: true, filePath };
     } catch (err: any) {
       console.error('Export backup error:', err);
@@ -60,7 +60,7 @@ export class BackupService {
     const filePath = filePaths[0];
 
     try {
-      const rawContent = fs.readFileSync(filePath, 'utf-8');
+      const rawContent = await fs.promises.readFile(filePath, 'utf-8');
       const parsed = JSON.parse(rawContent);
 
       // Validate schema

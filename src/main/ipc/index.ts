@@ -1,4 +1,4 @@
-import { ipcMain, BrowserWindow } from 'electron';
+import { BrowserWindow } from 'electron';
 import Database from 'better-sqlite3';
 import { IPC_CHANNELS } from '../../shared/constants/ipc-channels';
 import { registerNotesIpc } from './notes.ipc';
@@ -7,25 +7,26 @@ import { registerTagsIpc } from './tags.ipc';
 import { registerSearchIpc } from './search.ipc';
 import { registerSettingsIpc } from './settings.ipc';
 import { registerBackupIpc } from './backup.ipc';
+import { registerSecureHandler } from './security';
 
 export function registerAllIpcHandlers(db: Database.Database, getMainWindow: () => BrowserWindow | null): void {
-  // Domain handlers
-  registerNotesIpc(db);
-  registerNotebooksIpc(db);
-  registerTagsIpc(db);
-  registerSearchIpc(db);
-  registerSettingsIpc(db);
+  // Domain handlers with sender verification
+  registerNotesIpc(db, getMainWindow);
+  registerNotebooksIpc(db, getMainWindow);
+  registerTagsIpc(db, getMainWindow);
+  registerSearchIpc(db, getMainWindow);
+  registerSettingsIpc(db, getMainWindow);
   registerBackupIpc(db, getMainWindow);
 
-  // Window control handlers
-  ipcMain.handle(IPC_CHANNELS.WINDOW_MINIMIZE, () => {
+  // Window control handlers with sender verification
+  registerSecureHandler(IPC_CHANNELS.WINDOW_MINIMIZE, getMainWindow, () => {
     const win = getMainWindow();
-    if (win) win.minimize();
+    if (win && !win.isDestroyed()) win.minimize();
   });
 
-  ipcMain.handle(IPC_CHANNELS.WINDOW_MAXIMIZE, () => {
+  registerSecureHandler(IPC_CHANNELS.WINDOW_MAXIMIZE, getMainWindow, () => {
     const win = getMainWindow();
-    if (win) {
+    if (win && !win.isDestroyed()) {
       if (win.isMaximized()) {
         win.unmaximize();
       } else {
@@ -34,8 +35,8 @@ export function registerAllIpcHandlers(db: Database.Database, getMainWindow: () 
     }
   });
 
-  ipcMain.handle(IPC_CHANNELS.WINDOW_CLOSE, () => {
+  registerSecureHandler(IPC_CHANNELS.WINDOW_CLOSE, getMainWindow, () => {
     const win = getMainWindow();
-    if (win) win.close();
+    if (win && !win.isDestroyed()) win.close();
   });
 }

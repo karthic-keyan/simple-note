@@ -18,6 +18,22 @@ export const NotesHeader: React.FC = () => {
   const { specialView, selectedNotebookId, notebooks } = useNotebooksStore();
   const { selectedTagId, tags } = useTagsStore();
   const [isSortOpen, setIsSortOpen] = useState(false);
+  const [localSearch, setLocalSearch] = useState(searchQuery);
+
+  // Sync when search is cleared externally (e.g. view switch)
+  React.useEffect(() => {
+    setLocalSearch(searchQuery);
+  }, [searchQuery]);
+
+  // Debounce search query dispatch by 250ms to prevent excessive IPC calls
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      if (localSearch !== searchQuery) {
+        setSearchQuery(localSearch);
+      }
+    }, 250);
+    return () => clearTimeout(timer);
+  }, [localSearch, searchQuery, setSearchQuery]);
 
   // Compute Current Title
   let viewTitle = 'All Notes';
@@ -100,14 +116,17 @@ export const NotesHeader: React.FC = () => {
         />
         <input
           type="text"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          value={localSearch}
+          onChange={(e) => setLocalSearch(e.target.value)}
           placeholder="Search in notes (Ctrl+F)..."
           className="w-full bg-slate-100 dark:bg-slate-800/80 text-slate-900 dark:text-slate-100 text-xs pl-8 pr-7 py-1.5 rounded-md border border-transparent focus:border-blue-500 focus:bg-white dark:focus:bg-slate-900 outline-none transition-all placeholder-slate-400 dark:placeholder-slate-500"
         />
-        {searchQuery && (
+        {localSearch && (
           <button
-            onClick={() => setSearchQuery('')}
+            onClick={() => {
+              setLocalSearch('');
+              setSearchQuery('');
+            }}
             className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
           >
             <X size={12} />

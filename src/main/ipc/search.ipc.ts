@@ -1,7 +1,8 @@
-import { ipcMain } from 'electron';
+import { BrowserWindow } from 'electron';
 import Database from 'better-sqlite3';
 import { IPC_CHANNELS } from '../../shared/constants/ipc-channels';
 import { SearchRepository } from '../database/repositories/search.repository';
+import { registerSecureHandler } from './security';
 import { SearchQueryParams } from '../../shared/types/search';
 import { z } from 'zod';
 
@@ -15,10 +16,10 @@ const SearchQueryParamsSchema = z.object({
   limit: z.number().int().min(1).max(100).optional(),
 });
 
-export function registerSearchIpc(db: Database.Database): void {
+export function registerSearchIpc(db: Database.Database, getMainWindow: () => BrowserWindow | null): void {
   const repo = new SearchRepository(db);
 
-  ipcMain.handle(IPC_CHANNELS.SEARCH_QUERY, async (_event, params: SearchQueryParams) => {
+  registerSecureHandler(IPC_CHANNELS.SEARCH_QUERY, getMainWindow, async (_event, params: SearchQueryParams) => {
     const validParams = SearchQueryParamsSchema.parse(params);
     return repo.search(validParams);
   });

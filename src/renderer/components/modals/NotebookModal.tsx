@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Folder, FolderPlus } from 'lucide-react';
+import { X, FolderPlus } from 'lucide-react';
 import { useNotebooksStore } from '../../stores/notebooks.store';
 import { useUIStore } from '../../stores/ui.store';
 

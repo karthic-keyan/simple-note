@@ -1,6 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { CreateNoteSchema, UpdateNoteSchema } from '../../src/shared/schemas/note.schema';
-import { CreateNotebookSchema } from '../../src/shared/schemas/notebook.schema';
+import { CreateNoteSchema } from '../../src/shared/schemas/note.schema';
 import { CreateTagSchema } from '../../src/shared/schemas/tag.schema';
 import { BackupDataSchema } from '../../src/shared/schemas/backup.schema';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { X, Sun, Moon, Laptop, Keyboard, Sliders, HardDrive } from 'lucide-react';
 import { useSettingsStore } from '../../stores/settings.store';
 import { useUIStore } from '../../stores/ui.store';
-import { AppTheme, EditorFontSize } from '../../../shared/types/settings';
+import { EditorFontSize } from '../../../shared/types/settings';
 
 export const SettingsModal: React.FC = () => {
   const { isSettingsOpen, closeSettings } = useUIStore();

@@ -1,5 +1,5 @@
 import { IElectronAPI } from '../../shared/types/ipc';
-import { Note, CreateNoteInput, UpdateNoteInput } from '../../shared/types/note';
+import { Note } from '../../shared/types/note';
 import { Notebook } from '../../shared/types/notebook';
 import { Tag } from '../../shared/types/tag';
 import { UserSettings, DEFAULT_SETTINGS } from '../../shared/types/settings';

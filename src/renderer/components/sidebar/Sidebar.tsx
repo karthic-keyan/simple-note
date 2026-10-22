@@ -3,11 +3,8 @@ import {
   FileText, 
   Star, 
   Trash2, 
-  FolderPlus, 
-  Tag as TagIcon, 
   Plus, 
-  Settings as SettingsIcon,
-  Archive
+  Settings as SettingsIcon
 } from 'lucide-react';
 import { NavigationItem } from './NavigationItem';
 import { NotebooksTree } from './NotebooksTree';
@@ -19,7 +16,7 @@ import { useUIStore } from '../../stores/ui.store';
 
 export const Sidebar: React.FC = () => {
   const { specialView, selectSpecialView } = useNotebooksStore();
-  const { notes, loadNotes } = useNotesStore();
+  const { loadNotes } = useNotesStore();
   const { selectedTagId, selectTag } = useTagsStore();
   const { openNotebookModal, openTagModal, openSettings } = useUIStore();
 

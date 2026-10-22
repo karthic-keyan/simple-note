@@ -7,11 +7,7 @@ $appxDir = Join-Path $buildDir "appx"
 $publicDir = Join-Path $projectDir "public"
 $rendererAssetsDir = Join-Path $projectDir "src\renderer\assets"
 
-$masterIconPath = "C:\Users\karthikeyan\.gemini\antigravity-ide\brain\3afd5b4a-f096-4728-9d52-3534edc787ea\transparent_icon.png"
-
-if (-not (Test-Path $masterIconPath)) {
-    $masterIconPath = Join-Path $buildDir "icon.png"
-}
+$masterIconPath = Join-Path $buildDir "icon.png"
 
 if (-not (Test-Path $buildDir)) { New-Item -ItemType Directory -Path $buildDir -Force | Out-Null }
 if (-not (Test-Path $appxDir)) { New-Item -ItemType Directory -Path $appxDir -Force | Out-Null }

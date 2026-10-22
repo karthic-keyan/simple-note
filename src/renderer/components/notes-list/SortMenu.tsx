@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowDownAZ, ArrowUpZA, Clock, Calendar, Check } from 'lucide-react';
-import { NoteSortField, NoteSortOrder, NoteSortOptions } from '../../../shared/types/note';
+import { NoteSortField, NoteSortOrder } from '../../../shared/types/note';
 import { useNotesStore } from '../../stores/notes.store';
 
 interface SortMenuProps {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Tag as TagIcon, Plus, X, Check } from 'lucide-react';
+import { Plus, X } from 'lucide-react';
 import { Note } from '../../../shared/types/note';
 import { useTagsStore } from '../../stores/tags.store';
 import { useNotesStore } from '../../stores/notes.store';

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Download, Upload, ShieldCheck, AlertCircle, RefreshCw } from 'lucide-react';
+import { X, Download, Upload, ShieldCheck, RefreshCw } from 'lucide-react';
 import { useUIStore } from '../../stores/ui.store';
 import { useNotesStore } from '../../stores/notes.store';
 import { useNotebooksStore } from '../../stores/notebooks.store';

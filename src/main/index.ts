@@ -11,8 +11,6 @@ const __dirname = path.dirname(__filename);
 
 let mainWindow: BrowserWindow | null = null;
 
-const isDev = process.env.NODE_ENV === 'development' || !app.isPackaged;
-
 function createWindow(): void {
   const preloadCjs = path.join(__dirname, '../preload/index.cjs');
   const preloadJs = path.join(__dirname, '../preload/index.js');

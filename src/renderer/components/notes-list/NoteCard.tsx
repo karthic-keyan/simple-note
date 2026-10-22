@@ -5,8 +5,7 @@ import {
   Trash2, 
   RotateCcw, 
   MoreHorizontal, 
-  FolderInput,
-  Calendar
+  FolderInput
 } from 'lucide-react';
 import { Note } from '../../../shared/types/note';
 import { useNotesStore } from '../../stores/notes.store';

@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from './App';
-import { setupBrowserMock } from './mock/electron-mock';
 import './styles/index.css';
 
-// Initialize mock API only if not in Electron (for viewing directly in browser)
-setupBrowserMock();
+// Initialize mock API only if not in Electron (for development in standalone browser)
+if (import.meta.env.DEV && typeof window !== 'undefined' && !window.electronAPI) {
+  const { setupBrowserMock } = await import('./mock/electron-mock');
+  setupBrowserMock();
+}
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

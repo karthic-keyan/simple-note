@@ -1,6 +1,5 @@
 import Database from 'better-sqlite3';
 import { SearchQueryParams, SearchResultItem } from '../../../shared/types/search';
-import { Note } from '../../../shared/types/note';
 
 export class SearchRepository {
   constructor(private db: Database.Database) {}

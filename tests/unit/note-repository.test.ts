@@ -46,7 +46,6 @@ describe('NoteRepository & SearchRepository', () => {
 
   it('should update note title and content and track updated_at', () => {
     const note = noteRepo.create({ title: 'Initial' });
-    const originalUpdated = note.updated_at;
 
     const updated = noteRepo.update({
       id: note.id,
@@ -119,7 +118,7 @@ describe('NoteRepository & SearchRepository', () => {
   it('should associate tags with notes and filter by tag', () => {
     const tag = tagRepo.create({ name: 'productivity', color: '#10b981' });
     const note1 = noteRepo.create({ title: 'Task 1', tag_ids: [tag.id] });
-    const note2 = noteRepo.create({ title: 'Task 2' });
+    noteRepo.create({ title: 'Task 2' });
 
     const taggedNotes = noteRepo.getAll({ tag_id: tag.id });
     expect(taggedNotes.length).toBe(1);

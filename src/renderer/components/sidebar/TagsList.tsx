@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Tag as TagIcon, MoreHorizontal, Pencil, Trash2 } from 'lucide-react';
+import { MoreHorizontal, Pencil, Trash2 } from 'lucide-react';
 import { useTagsStore } from '../../stores/tags.store';
 import { useNotebooksStore } from '../../stores/notebooks.store';
 import { useNotesStore } from '../../stores/notes.store';

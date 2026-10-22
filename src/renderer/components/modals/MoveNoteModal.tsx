@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { X, Folder, FolderInput, Check } from 'lucide-react';
 import { useNotebooksStore } from '../../stores/notebooks.store';
 import { useNotesStore } from '../../stores/notes.store';

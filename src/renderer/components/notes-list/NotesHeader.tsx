@@ -11,14 +11,12 @@ import {
 import { useNotesStore } from '../../stores/notes.store';
 import { useNotebooksStore } from '../../stores/notebooks.store';
 import { useTagsStore } from '../../stores/tags.store';
-import { useUIStore } from '../../stores/ui.store';
 import { SortMenu } from './SortMenu';
 
 export const NotesHeader: React.FC = () => {
   const { notes, createNote, searchQuery, setSearchQuery, emptyTrash } = useNotesStore();
   const { specialView, selectedNotebookId, notebooks } = useNotebooksStore();
   const { selectedTagId, tags } = useTagsStore();
-  const { openDeleteModal } = useUIStore();
   const [isSortOpen, setIsSortOpen] = useState(false);
 
   // Compute Current Title

@@ -16,11 +16,9 @@
     "build": "tsc && vite build",
     "test": "vitest run",
     "test:watch": "vitest",
-    "rebuild:electron": "powershell -Command \"cd node_modules/better-sqlite3; npx prebuild-install --runtime=electron --target=34.2.0 --arch=x64; Copy-Item build/Release/better_sqlite3.node ../../native-addons/better_sqlite3_electron.node -Force\"",
-    "rebuild:node": "npm rebuild better-sqlite3",
-    "package": "npm run build && node scripts/convert-bmp.js && npx electron-builder --win nsis portable",
-    "package:appx": "npm run build && npx electron-builder --win appx",
-    "package:all": "npm run build && node scripts/convert-bmp.js && npx electron-builder --win nsis portable appx"
+    "package": "npm run build && electron-builder --win nsis portable",
+    "package:appx": "npm run build && electron-builder --win appx",
+    "package:all": "npm run build && electron-builder --win nsis portable appx"
   },
   "dependencies": {
     "@tiptap/extension-link": "^2.11.5",
